@@ -76,7 +76,27 @@ Download [Bosch_BSEC2_Library](https://github.com/BoschSensortec/Bosch-BSEC2-Lib
 
 - Install the Teensy package
 
-### 4. Verify and upload the example code
+### 3. Modify the platform.txt file
+
+If you have already used the previous example code and hack guide, remove the linker flag `-libalgobsec` in the platform.txt file and reference to the `compiler.c.elf.extra_flags`.
+
+The standard arduino-builder now passes the linker flags under `compiler.libraries.ldflags`. Most platform.txt files do not already include this new optional variable. You will hence need to declare this variable's default and add it to the end of the combine recipe. It is recommended to declare it in the following section like below,
+
+#### Teensy core
+
+Original line 58,
+```
+## Link
+recipe.c.combine.pattern="{compiler.path}{build.toolchain}{build.command.linker}" {build.flags.optimize} {build.flags.ld} {build.flags.ldspecs} {build.flags.cpu} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" "-L{build.path}" {build.flags.libs}
+```
+Should be,
+```
+## Link
+compiler.libraries.ldflags=
+recipe.c.combine.pattern="{compiler.path}{build.toolchain}{build.command.linker}" {build.flags.optimize} {build.flags.ld} {build.flags.ldspecs} {build.flags.cpu} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" {compiler.libraries.ldflags} "-L{build.path}" {build.flags.libs}
+```
+
+### 5. Verify and upload the example code
 
 Start or restart the Arduino IDE. Open any of the example codes found under  ```Bosch_BSEC2_Library>examples```.
 
@@ -92,7 +112,7 @@ Select your board and COM port. Upload the example. Open the Serial monitor. You
 	
 	**Note:** Please ensure to use the bsec_interface_multi.h header file specifically, for demonstrating the multi instance feature
 
-### 5. Tested board/core list
+### 6. Tested board/core list
 
 The current list of tested boards include,
 
