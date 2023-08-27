@@ -76,7 +76,7 @@ Download [Bosch_BSEC2_Library](https://github.com/BoschSensortec/Bosch-BSEC2-Lib
 
 - Install the Teensy package
 
-### 3. Modify the platform.txt file
+### 4. Modify the platform.txt file
 
 If you have already used the previous example code and hack guide, remove the linker flag `-libalgobsec` in the platform.txt file and reference to the `compiler.c.elf.extra_flags`.
 
