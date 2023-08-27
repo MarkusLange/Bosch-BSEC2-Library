@@ -1,4 +1,4 @@
-# Instructions for using the BSEC Arduino Library in Arduino 1.8.19
+# Instructions for using the BSEC Arduino Library in Arduino 1.8.19, 2.x
 
 ## About BSEC
 
@@ -32,12 +32,7 @@ Available binaries for download:
 
 | Platform | Compiler | TYPE |
 |----------|----------|------|
-| Cortex-ARM | GCC | Cortex-M0+, M3, M4, M4_FPU, M33_FPU |
-| ESP8266 | xtensa-lx106-elf-gcc | ESP8266 |
-| ESP32 | xtensa-esp32-elf-gcc | ESP32 |
-| ESP32 | xtensa-esp32s2-elf-gcc | ESP32-S2 |
-| ESP32 | xtensa-esp32s3-elf-gcc | ESP32-S3 |
-| ESP32 | riscv32-esp-elf-gcc | ESP32-C3 |
+| Cortex-ARM | GCC | Cortex-M0+, M3, M4, M4_FPU, M33_FPU, M7 |
 
 The library size information above doesn't include additional dependencies based on the embedded system project & platform.
 
@@ -61,25 +56,25 @@ The BSEC software is only available for download or use after accepting the soft
 
 ### 1. Install the latest Arduino IDE
 
-As of this publication, the latest Arduino IDE 1.8.19 can be downloaded from this [link](https://www.arduino.cc/en/software)
+As of this publication, the latest Arduino IDE 1.8.19, 2.x can be downloaded from this [link](https://www.arduino.cc/en/software)
 
 ### 2. Install the BSEC2 library and BME68x Library
 
 Download [Bosch_BSEC2_Library](https://github.com/BoschSensortec/Bosch-BSEC2-Library) and [Bosch_BME68x_Library](https://github.com/BoschSensortec/Bosch-BME68x-Library) (this library is a dependency to the BSEC2 library) as a zip and import it into the Arduino IDE. Refer to [this](https://www.arduino.cc/en/Guide/Libraries) guide on how to import libraries.
 
-### 3. Install esp32 Board package in the Arduino IDE
+### 3. Install Teensy Board package in the Arduino IDE
 
 - Open File->Preferences->Settings
 
 - Insert the following link into the "Additional Boards Manager URLs":
 
-	https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+	https://www.pjrc.com/teensy/package_teensy_index.json
 
 	**Note:** Please ensure that the proxy settings are updated under File->Preferences->Network
 
-- Go to Tools->Board->Boards Manager and search for "esp32"
+- Go to Tools->Board->Boards Manager and search for "Teensy"
 
-- Install the esp32 package
+- Install the Teensy package
 
 ### 4. Verify and upload the example code
 
@@ -103,7 +98,12 @@ The current list of tested boards include,
 
 | Core MCU | Tested boards | Arduino core version | Arduino core repository |
 |----------|---------------|----------------------|-------------------------|
-| Esp32 | Adafruit ESP32 Feather | v2.0.3 | https://github.com/espressif/arduino-esp32 |
-| Esp8266 | Adafruit Feather HUZZAH ESP8266 | v3.0.2 | https://github.com/esp8266/Arduino |
+| Cortex-m4 | Teensy 3.0 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m4 | Teensy 3.1 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m4 | Teensy 3.2 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m4 with FPU | Teensy 3.5 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m4 with FPU | Teensy 3.6 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m7 | Teensy 4.0 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
+| Cortex-m7 | Teensy 4.1 | Teensyduino Version 1.58 for Arduino 2.x | https://github.com/PaulStoffregen/cores |
 
 ## Copyright (C) 2021 Bosch Sensortec GmbH. All rights reserved.
